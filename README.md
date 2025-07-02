@@ -1,7 +1,7 @@
 # app-tareas
 Es una aplicación de gestión de tareas desarrollada con Vite y TypeScript.
 
-📖 Descripción
+📖 Descripción: 
 Una aplicación de gestión de tareas  desarrollada con Vite y TypeScript. Permite crear, marcar, filtrar, editar y eliminar tareas, añadir etiquetas y fechas de vencimiento, y mantener el estado en localStorage.
 🚀 Características principales
 1.	Añadir tareas con título, etiquetas y fecha de vencimiento.
