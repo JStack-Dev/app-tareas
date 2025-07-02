@@ -1,2 +1,2 @@
 # app-tareas
-Es uan aplicacion de gestion de tareas desarrollada cpn Vite y TypeScript.
+Es una aplicación de gestión de tareas desarrollada con Vite y TypeScript.
