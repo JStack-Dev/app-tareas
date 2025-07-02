@@ -1,0 +1,273 @@
+/* src/styles/style.css */
+/*───────────────────────────────────────────
+  Reset & Box Sizing
+───────────────────────────────────────────*/
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*───────────────────────────────────────────
+  Variables
+───────────────────────────────────────────*/
+:root {
+  /* Colors */
+  --clr-primary:    #4A90E2;
+  --clr-secondary:  #50E3C2;
+  --clr-bg:         #F5F5F5;
+  --clr-white:      #FFFFFF;
+  --clr-text:       #333333;
+  --clr-text-light: #777777;
+  --clr-error:      #E94E77;
+
+  /* Typography */
+  --fs-base: 16px;
+  --fs-sm:   0.875rem;
+  --fs-lg:   1.125rem;
+  --ff-sans: 'Helvetica Neue', Arial, sans-serif;
+
+  /* Spacing */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+
+  /* Misc */
+  --radius:    0.5rem;
+  --transition: 0.3s ease;
+}
+
+/*───────────────────────────────────────────
+  Base Styles
+───────────────────────────────────────────*/
+body {
+  font-family: var(--ff-sans);
+  font-size: var(--fs-base);
+  color: var(--clr-text);
+  background-color: var(--clr-bg);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-lg);
+}
+
+/* Headings */
+h1 {
+  font-size: 2rem;
+  margin-bottom: var(--space-lg);
+  color: var(--clr-primary);
+  text-align: center;
+}
+
+/*───────────────────────────────────────────
+  Layout: To-Do Container
+───────────────────────────────────────────*/
+#todo-container {
+  background: var(--clr-white);
+  width: 100%;
+  max-width: 600px;
+  padding: var(--space-lg);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+/*───────────────────────────────────────────
+  Form: Add New Task
+  (asume #todo-form, #todo-input, #add-btn)
+───────────────────────────────────────────*/
+/*───────────────────────────────────────────
+  Formulario: Añadir nueva tarea
+───────────────────────────────────────────*/
+#task-form {
+  display: flex;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+
+/* Campo de entrada */
+#task-input {
+  flex: 1;
+  padding: 0.75rem 1rem;                           /* Más aire interno */
+  font-size: var(--fs-lg);
+  background-color: #fff;
+  color: var(--clr-text);
+  border: none;
+  border-radius: 1rem;                             /* Bordes más redondos */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+#task-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.3);   /* Halo azul suave */
+}
+
+/* Placeholder */
+#task-input::placeholder {
+  color: var(--clr-text-light);
+  font-style: italic;
+}
+
+/* Botón de agregar tarea */
+#add-btn {
+  padding: 0.75rem 1.25rem;                          /* Igual que el input */
+  font-size: 1rem;                                   /* Misma tipografía que #task-input */
+  font-weight: 600;                                  /* Negrita suave */
+  background: var(--clr-primary);                    /* Fondo azul corporativo */
+  color: var(--clr-white);                           /* Texto blanco */
+  border: none;
+  border-radius: 1rem;                               /* Coincide con el input */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);           /* Misma sombra */
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+#add-btn:hover {
+  background: var(--clr-secondary);                  /* Cambia a verde-agua */
+  transform: translateY(-2px);                       /* Se eleva al hacer hover */
+}
+
+#add-btn:active {
+  transform: scale(0.97);                            /* Ligero efecto de pulsación */
+}
+
+
+
+/*───────────────────────────────────────────
+  Filters
+───────────────────────────────────────────*/
+#filter-container {
+  display: flex;
+  gap: var(--space-sm);
+  justify-content: center;
+  margin-bottom: var(--space-md);
+}
+
+.filter-btn {
+  padding: var(--space-xs) var(--space-sm);
+  font-size: var(--fs-sm);
+  background: none;
+  border: 2px solid var(--clr-primary);
+  border-radius: var(--radius);
+  color: var(--clr-primary);
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition);
+}
+
+.filter-btn:hover {
+  background: var(--clr-primary);
+  color: var(--clr-white);
+}
+
+.filter-btn.active {
+  background: var(--clr-primary);
+  color: var(--clr-white);
+}
+
+/*───────────────────────────────────────────
+  Statistics & Clear Completed
+───────────────────────────────────────────*/
+#stats-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-md);
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+#stats-container span {
+  font-size: var(--fs-sm);
+  color: var(--clr-text-light);
+}
+
+#clear-completed-btn {
+  padding: var(--space-xs) var(--space-sm);
+  font-size: var(--fs-sm);
+  background: var(--clr-error);
+  color: var(--clr-white);
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: opacity var(--transition);
+}
+
+#clear-completed-btn:hover {
+  opacity: 0.8;
+}
+
+/*───────────────────────────────────────────
+  Task List
+───────────────────────────────────────────*/
+#task-list {
+  list-style: none;
+}
+
+#task-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--clr-bg);
+  padding: var(--space-sm);
+  margin-bottom: var(--space-xs);
+  border-radius: var(--radius);
+  transition: background var(--transition);
+}
+
+#task-list li:hover {
+  background: #eaeaea;
+}
+
+.task-text {
+  flex: 1;
+  margin-left: var(--space-sm);
+  font-size: var(--fs-sm);
+  color: var(--clr-text);
+}
+
+.task-text.completed {
+  text-decoration: line-through;
+  color: var(--clr-text-light);
+}
+
+/* Botón de eliminar dentro de cada tarea (asume .remove-btn) */
+.remove-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: var(--clr-error);
+  transition: transform var(--transition);
+}
+
+.remove-btn:hover {
+  transform: scale(1.2);
+}
+
+/* Checkbox (asume .task-checkbox) */
+.task-checkbox {
+  width: 1rem;
+  height: 1rem;
+  cursor: pointer;
+}
+
+/*───────────────────────────────────────────
+  Responsive
+───────────────────────────────────────────*/
+@media (max-width: 480px) {
+  #todo-container {
+    padding: var(--space-md);
+  }
+  #stats-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  #filter-container {
+    flex-wrap: wrap;
+  }
+}
