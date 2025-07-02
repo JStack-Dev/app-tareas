@@ -12,8 +12,8 @@ Una aplicación de gestión de tareas  desarrollada con Vite y TypeScript. Permi
 
 📦 Instalación y ejecución
 1.	Clonar el repositorio:
-2.	git clone https://github.com/tu-usuario/todo-app.git
-3.	cd todo-app
+2.	git clone https://github.com/Jstack-Dev/app-tareas.git
+3.	cd app-tareas
 4.	Instalar dependencias:
 5.	npm install
 6.	Iniciar el servidor de desarrollo:
